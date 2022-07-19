@@ -42,7 +42,7 @@ namespace RetailInMotionBLL
             }
 
             var utcNow = DateTime.UtcNow;
-            int result = _ordersRepository.Add(
+            int orderId = _ordersRepository.Add(
                 new Order()
                 {
                     AddressLine1 = order.AddressLine1,
@@ -54,13 +54,20 @@ namespace RetailInMotionBLL
                     DateTimeCreated = utcNow,
                     DateTimeUpdated = utcNow,
                 });
-            if (result == 0)
+            if (orderId == 0)
             {
                 //ERROR
             }
 
+
+
             if ((order.OrderItems?.Count ?? 0) > 0)
             {
+                foreach (var item in order.OrderItems)
+                {
+                    item.OrderId = orderId;
+                }
+
                 int addItemsResult = _orderItemsRepository.Add(Map(order.OrderItems));
                 if (addItemsResult == 0)
                 {
@@ -68,7 +75,7 @@ namespace RetailInMotionBLL
                 }
             }
 
-            order.Id = result;
+            order.Id = orderId;
             return order;
         }
 
