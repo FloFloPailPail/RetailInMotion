@@ -38,17 +38,17 @@ namespace RetailInMotion.Controllers
             return Ok(createdOrder);
         }
 
-        [HttpPost("edit-delivery-address")]
-        public IActionResult UpdateDeliveryAddress(OrderApiModel order)
+        [HttpPost("{id}/edit-delivery-address")]
+        public IActionResult UpdateDeliveryAddress(int id, OrderApiModel order)
         {
-            var orderResult = _ordersService.UpdateDeliveryAddress(order);
+            var orderResult = _ordersService.UpdateDeliveryAddress(id, order);
             return Ok(orderResult);
         }
 
-        [HttpPut("{orderId}/edit")]
-        public IActionResult UpdateItems(int orderId, IEnumerable<OrderItemApiModel> orderItems)
+        [HttpPost("{id}/edit-items")]
+        public IActionResult UpdateItems(int id, IEnumerable<OrderItemApiModel> orderItems)
         {
-            var order = _ordersService.UpdateItems(orderId, orderItems);
+            var order = _ordersService.UpdateItems(id, orderItems);
             return Ok(order);
         }
 

@@ -98,7 +98,7 @@ namespace RetailInMotionBLL
             return Map(orders);
         }
 
-        public OrderApiModel UpdateDeliveryAddress(OrderApiModel order)
+        public OrderApiModel UpdateDeliveryAddress(int id, OrderApiModel order)
         {
             if (order == null)
             {
@@ -106,7 +106,7 @@ namespace RetailInMotionBLL
                 throw new ArgumentException("Order object is null");
             }
 
-            var orderToEdit = _ordersRepository.Get(order.Id);
+            var orderToEdit = _ordersRepository.Get(id);
             orderToEdit.AddressLine1 = order.AddressLine1;
             orderToEdit.AddressLine2 = order.AddressLine2;
             orderToEdit.AddressLine3 = order.AddressLine3;
