@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using RetailInMotionContracts;
+﻿using Microsoft.AspNetCore.Mvc;
 using RetailInMotionContracts.BLL;
-using RetailInMotionObjects;
 using RetailInMotionObjects.ApiModels;
+using System.Collections.Generic;
 
 namespace RetailInMotion.Controllers
 {
@@ -15,13 +9,11 @@ namespace RetailInMotion.Controllers
     [Route("[controller]")]
     public class OrdersController : ControllerBase
     {
-        //private readonly ILogger<OrderController> _logger;
         private readonly IOrdersService _ordersService;
 
-        public OrdersController(IOrdersService ordersService/*, ILogger<OrderController> logger*/)
+        public OrdersController(IOrdersService ordersService)
         {
             _ordersService = ordersService;
-            //_logger = logger;
         }
 
         [HttpPost("add-new")]

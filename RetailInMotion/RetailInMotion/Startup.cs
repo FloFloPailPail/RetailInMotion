@@ -1,20 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using RetailInMotionBLL;
 using RetailInMotionContracts.BLL;
 using RetailInMotionContracts.DAL;
-using RetailInMotionDAL;
 using RetailInMotionDAL.Repositories;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace RetailInMotion
 {
@@ -29,13 +24,12 @@ namespace RetailInMotion
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers(); 
+            services.AddControllers();
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddSingleton(Configuration);
             services.AddScoped<IOrdersService, OrdersService>();
             services.AddSingleton<IOrdersRepository>(new OrdersRepository(connectionString));
             services.AddSingleton<IOrderItemsRepository>(new OrderItemsRepository(connectionString));
-            //services.AddMemoryCache
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -46,13 +40,27 @@ namespace RetailInMotion
             }
             else
             {
-                app.UseExceptionHandler("/error");
+                app.UseExceptionHandler(exceptionHandlerApp =>
+                {
+                    exceptionHandlerApp.Run(async context =>
+                    {
+                        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+
+                        context.Response.ContentType = Text.Plain;
+
+                        await context.Response.WriteAsync("An exception was thrown.");
+
+                        var exceptionHandlerPathFeature =
+                            context.Features.Get<IExceptionHandlerPathFeature>();
+
+                        await context.Response.WriteAsync(exceptionHandlerPathFeature?.Error.Message);
+                    });
+                });
             }
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-            //app.UseMvc();
 
             app.UseAuthorization();
 

@@ -59,8 +59,6 @@ namespace RetailInMotionBLL
                 //ERROR
             }
 
-
-
             if ((order.OrderItems?.Count ?? 0) > 0)
             {
                 foreach (var item in order.OrderItems)

@@ -26,18 +26,6 @@ namespace RetailInMotionDAL
             return _sqlConnection.Execute(sql, param, transaction, commandTimeout, commandType);
         }
 
-        public IEnumerable<dynamic> Query(
-            string sql,
-            object param = null,
-            IDbTransaction transaction = null,
-            bool buffered = true,
-            int? commandTimeout = null,
-            CommandType? commandType = null
-            )
-        {
-            return _sqlConnection.Query(sql, param, transaction, buffered, commandTimeout, commandType);
-        }
-
         public IEnumerable<T> Query<T>(
             string sql,
             object param = null,

@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailInMotion", "RetailInMotion\RetailInMotion.csproj", "{C915F7CD-CBBB-4EE9-B935-5A61CE28135F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailInMotion", "RetailInMotion\RetailInMotion.csproj", "{C915F7CD-CBBB-4EE9-B935-5A61CE28135F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailInMotionDAL", "RetailInMotionDAL\RetailInMotionDAL.csproj", "{704272E9-1B77-42DA-8809-8AAD830D7CF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailInMotionDAL", "RetailInMotionDAL\RetailInMotionDAL.csproj", "{704272E9-1B77-42DA-8809-8AAD830D7CF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailInMotionBLL", "RetailInMotionBLL\RetailInMotionBLL.csproj", "{32C67F8C-4F31-4ADF-BC11-F47F2C149206}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailInMotionBLL", "RetailInMotionBLL\RetailInMotionBLL.csproj", "{32C67F8C-4F31-4ADF-BC11-F47F2C149206}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailInMotionContracts", "RetailInMotionContracts\RetailInMotionContracts.csproj", "{899FFC25-26D5-4B76-83A4-B209F64B2008}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailInMotionContracts", "RetailInMotionContracts\RetailInMotionContracts.csproj", "{899FFC25-26D5-4B76-83A4-B209F64B2008}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailInMotionTests", "RetailInMotionTests\RetailInMotionTests.csproj", "{9187FB68-16B6-4D2B-BF65-0A166ADAD61A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetailInMotionObjects", "RetailInMotionObjects\RetailInMotionObjects.csproj", "{BACA8556-8A2F-448E-ACA4-DE3F94410E90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetailInMotionObjects", "RetailInMotionObjects\RetailInMotionObjects.csproj", "{BACA8556-8A2F-448E-ACA4-DE3F94410E90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +35,6 @@ Global
 		{899FFC25-26D5-4B76-83A4-B209F64B2008}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{899FFC25-26D5-4B76-83A4-B209F64B2008}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{899FFC25-26D5-4B76-83A4-B209F64B2008}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9187FB68-16B6-4D2B-BF65-0A166ADAD61A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9187FB68-16B6-4D2B-BF65-0A166ADAD61A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9187FB68-16B6-4D2B-BF65-0A166ADAD61A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9187FB68-16B6-4D2B-BF65-0A166ADAD61A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BACA8556-8A2F-448E-ACA4-DE3F94410E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BACA8556-8A2F-448E-ACA4-DE3F94410E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BACA8556-8A2F-448E-ACA4-DE3F94410E90}.Release|Any CPU.ActiveCfg = Release|Any CPU

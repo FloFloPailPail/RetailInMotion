@@ -13,7 +13,7 @@ namespace RetailInMotionDAL.Repositories
 {
     public class OrdersRepository : RepositoryBase, IOrdersRepository
     {
-        public OrdersRepository(string connectionString/*, ICache cache*/) : base(connectionString)
+        public OrdersRepository(string connectionString) : base(connectionString)
         {
         }
 
@@ -38,7 +38,6 @@ namespace RetailInMotionDAL.Repositories
 
         public int Add(Order order)
         {
-            var utcNow = DateTime.UtcNow;
             string sql =
                 @"INSERT INTO Orders 
                 (AddressLine1, AddressLine2, AddressLine3, AddressLine4, PostalCode, CountryCode, DateTimeCreated, DateTimeUpdated) 
@@ -142,8 +141,6 @@ namespace RetailInMotionDAL.Repositories
             string query = $@"
                     SELECT * FROM
                         Orders o
-                    --LEFT JOIN
-                    --    OrderItems oi ON (oi.OrderId = o.Id)
                     WHERE
                         o.DateTimeDeleted IS NULL
                     ORDER BY
@@ -157,31 +154,6 @@ namespace RetailInMotionDAL.Repositories
             {
                 orders = connection.Query<OrderDTO>(query).ToList();
             }
-
-            return orders;
-            //var ordersDictionary = new Dictionary<int, OrderDTO>();
-            //using (var connection = GetConnection())
-            //{
-            //    orders = connection.Query<OrderDTO, OrderItem, OrderDTO>(
-            //        query,
-            //        (order, orderItem) =>
-            //        {
-            //            OrderDTO orderDTO;
-            //            if (!ordersDictionary.TryGetValue(order.Id, out orderDTO))
-            //            {
-            //                orderDTO = order;
-            //                orderDTO.OrderItems = new List<OrderItem>();
-            //                ordersDictionary.Add(orderDTO.Id, orderDTO);
-            //            }
-
-            //            if (orderItem != null)
-            //            {
-            //                orderDTO.OrderItems.Add(orderItem);
-            //            }
-            //            return orderDTO;
-            //        })
-            //        .ToList();
-            //}
 
             return orders;
         }

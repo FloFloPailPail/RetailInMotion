@@ -1,8 +1,5 @@
 ﻿using RetailInMotionContracts.DAL;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace RetailInMotionDAL.Repositories
 {
@@ -10,7 +7,7 @@ namespace RetailInMotionDAL.Repositories
     {
         private readonly string _connectionString;
 
-        public RepositoryBase(string connectionString/*, ICache cache*/)
+        public RepositoryBase(string connectionString)
         {
             _connectionString = connectionString;
         }
